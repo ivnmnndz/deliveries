@@ -7,9 +7,7 @@ const {
   deleteDeliveryRoute,
 } = require("../controllers/deliveryRouteController");
 
-router.get("/", getDeliveryRoutes);
-router.post("/", addDeliveryRoute);
-router.put("/:id", updateDeliveryRoute);
-router.delete("/:id", deleteDeliveryRoute);
+router.route("/").get(getDeliveryRoutes).post(addDeliveryRoute);
+router.route("/:id").put(updateDeliveryRoute).delete(deleteDeliveryRoute);
 
 module.exports = router;

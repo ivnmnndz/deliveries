@@ -9,6 +9,10 @@ const getDeliveryRoutes = (req, res) => {
 //@route POST /api/routes
 //@access private
 const addDeliveryRoute = (req, res) => {
+  if (!req.body.text) {
+    res.status(400);
+    throw new Error("Please add text field");
+  }
   res.status(200).json({ routes: "set delivery routes" });
 };
 
