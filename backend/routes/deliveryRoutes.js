@@ -7,7 +7,9 @@ const {
   deleteDeliveryRoute,
 } = require("../controllers/deliveryRouteController");
 
-router.route("/").get(getDeliveryRoutes).post(addDeliveryRoute);
-router.route("/:id").put(updateDeliveryRoute).delete(deleteDeliveryRoute);
+const { protected } = require('../middleware/authMiddleware')
+
+router.route("/").get(protected, getDeliveryRoutes).post(protected, addDeliveryRoute);
+router.route("/:id").put(protected, updateDeliveryRoute).delete(protected, deleteDeliveryRoute);
 
 module.exports = router;
